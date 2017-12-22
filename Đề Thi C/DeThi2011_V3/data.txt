@@ -1,0 +1,18 @@
+bus	xe bus
+by	bang
+go	di
+handsome	dep trai
+i	toi
+is	la
+like	thich
+men	dan ong
+my	cua toi
+name	ten
+phone	dien thoai
+play	choi
+school	truong hoc
+soccer	bong da
+to	toi 
+translate	dich
+want	muon
+women	phu nu

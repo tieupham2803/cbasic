@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include"BST.h"
+int main()
+{
+  FILE *f1;
+  f1=fopen("tudien.txt","r");
+  KeyType x;
+  TreeType root;
+  while(!feof)
+    {
+      fscanf(w,"%s",x.eng);
+      fgetc(f1);
+      fgets(x.vi,20,f1);
+      Insert(x,root);
+      printf("%-20s%s",root.eng,root.vi);
+    }
+}

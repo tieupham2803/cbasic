@@ -1,0 +1,7 @@
+1. Tạo thư viện linkedlist mới
+-Tham số truyền vào là con trỏ của con trỏ tới root (tức là truyền kiểu tham trị của root) (DONE!!!)
+-Thêm 2 hàm tìm kiếm chiến lược, hàm chèn đầu, xóa đầu vào linkedlist (DONE!!!)
+-Sau đó test lại trên Nokia, làm bài toán ngăn xếp (DONE!!!)
+2. Tạo thư viện doublelinkedlist sửa đổi từ thư viện linkedlist ở trên, thêm 2 hàm chèn cuối và xóa cuối
+Sau đó test lại trên Nokia, làm bài toán hàng đợi
+3. Thêm hàm duyệt theo chiều rộng cho cây nhị phân (DELETE!!!)

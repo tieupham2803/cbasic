@@ -1,0 +1,115 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 81
+typedef struct node {element el; struct node* prev; struct node* next;} node;
+typedef struct item {node *root; node *last;} item;
+/*====================================================================
+          Cac ham phu (duoc khai bao trong chuong trinh chinh)
+====================================================================*/
+void printTitle();
+void printNode(node *cur, int i);
+element inputEl();
+void editImport(element *import);
+void displayDatfile(char path[MAX]);
+//Sua noi dung element doc tu file, dung trong ham nhap tu file vao
+//danh sach
+int compareNode1(node *nd1, node *nd2);
+//Dung trong ham chen vao danh sach co sap xep
+int compareNode2(node *nd1, node *nd2);
+//Dung trong ham xoa node theo ten
+int compareNode3(node *nd1, node *nd2); //Dung trong ham tim kiem
+/*====================================================================
+                    Cac ham ho tro cho xu li danh sach
+====================================================================*/
+//Ham khoi tao danh sach
+void initList(item *list)
+{
+  list->root=NULL; list->last=NULL;
+}
+//Kiem tra danh sach rong
+int isEmptyList(item list)
+{
+  return (list.root==NULL&&list.last==NULL);
+}
+//Ham dem so phan tu trong danh sach
+int SizeofList(item list)
+{
+  int size=0; node *cur=list.root;
+  while(cur!=NULL) {cur=cur->next; size++;};
+  return size;
+}
+//Tao node moi
+struct node* makeNewNode(element El)
+{
+  node *newNode=(node*)malloc(sizeof(node));
+  if(newNode==NULL) printf("Cap phat node moi khong thanh cong!\n");
+  else
+  {
+    newNode->el=El; newNode->prev=NULL; newNode->next=NULL;
+    return newNode;
+  }
+}
+/*====================================================================
+                  Cac ham chinh (tac dong den danh sach)
+====================================================================*/
+//====================================================================
+//Nhap du lieu tu file .dat
+void importfromDatfiletoList(item *list, char path[MAX])
+{
+  element *import; node *new; FILE *file;
+  if((file=fopen(path,"r+b"))==NULL)
+    printf("Khong tim thay file %s de doc du lieu!\n",path);
+  else
+  {
+    import=(element*)malloc(sizeof(element));
+    while(fread(import,sizeof(element),1,file)!=0)
+    {
+      editImport(import);
+      new=makeNewNode(*import);
+      if(isEmptyList(*list)) {list->root=new; list->last=new;}
+      else
+      {
+        list->last->next=new; new->prev=list->last;
+        list->last=new;
+      }
+    }
+    free(import); fclose(file);
+  }
+}
+//====================================================================
+//Nhap du lieu tu file .dat co sap xep theo compareNode1
+void insertNewNodeintosortedList(item *list, element El);
+void importfromDatfiletosortedList(item *list, char path[MAX])
+{
+  element *import; node *new; FILE *file;
+  if((file=fopen(path,"r+b"))==NULL)
+    printf("Khong tim thay file %s de doc du lieu!\n",path);
+  else
+  {
+    import=(element*)malloc(sizeof(element));
+    while(fread(import,sizeof(element),1,file)!=0)
+    {
+      editImport(import);
+      insertNewNodeintosortedList(list,*import);
+    }
+    free(import); fclose(file);
+  }
+}
+//====================================================================
+//Chen them node vao danh sach co sap xep theo CompareNode1
+void insertNewNodeintosortedList(item *list, element El)
+{
+  node *insertNode=makeNewNode(El),*cur;
+  if(isEmptyList(*list)||compareNode1(insertNode,(*list)->root)<0)
+  {
+    insertNode->next=(*list)->root; (*list)->root->prev=insertNode;
+    (*list)->root=insertNode;
+  }
+  else
+  {
+    cur=list->root;
+    while(cur!=NULL&&compareNode1(insertNode,cur)>=0) cur=cur->next;
+    cur->prev->next=insertNode; insertNode->prev=cur->prev;
+    insertNode->next=cur; cur->prev=insertNode;
+  }
+}

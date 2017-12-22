@@ -1,0 +1,7 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct phoneaddress {char name[20]; char tel[11]; char email[25];} phoneaddress;
+void main()
+{
+
+}

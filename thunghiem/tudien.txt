@@ -1,0 +1,4 @@
+water	nuoc
+dog	con cho
+television	tivi
+computer	may vi tinh

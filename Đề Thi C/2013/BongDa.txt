@@ -1,0 +1,6 @@
+FC01      FC03      3	3
+FC02      FC05      2	3
+FC01      FC02      3	3
+FC02      FC05      4	2
+FC01      FC04      3	3
+FC02      FC03      4	5

@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include"BST.h"
+#define MAX 80
+FILE *f1;
+int main()
+{
+  KeyType x;
+  TreeType Root;
+  f1=fopen("in.txt","r");
+  char buff[MAX];
+  while(!feof(f)
+    {
+      while(!feof(f)
+	{
+	  fscanf(f1,"%s",buff);
+	  if(Search(x,Root);
+	}
+}
